@@ -71,6 +71,7 @@ public class DB extends SQLiteOpenHelper {
         ArrayList<Timer> alarms = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
+                String _id = cursor.getString(0);
                 String sActive = cursor.getString(4);
                 Timer timer = new Timer();
                 timer.Day = getDay(cursor.getString(1));
@@ -81,6 +82,7 @@ public class DB extends SQLiteOpenHelper {
                 }
                 timer.Clock = cursor.getString(2);
                 timer.sound = cursor.getString(3);
+                timer._id = _id;
                 alarms.add(timer);
                 Log.i("DB", timer.toString());
 
@@ -89,6 +91,21 @@ public class DB extends SQLiteOpenHelper {
         Log.i("DB", ""+alarms.size());
         cursor.close();
         return alarms;
+    }
+
+    public void deleteAlarm(String id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TimerDB.TimerEntry.TABLE_NAME,"_id=?",new String[]{id});
+    }
+
+    public void updateAlarm(Timer timer) {
+        ContentValues cv = new ContentValues();
+        cv.put("timer",timer.Clock);
+        cv.put("sound",timer.sound);
+        cv.put("active",timer.isActive);
+        cv.put("day",timer.Day.getText());
+        SQLiteDatabase db = getWritableDatabase();
+        db.update(TimerDB.TimerEntry.TABLE_NAME,cv,"_id="+timer._id,null);
     }
 
     public Days getDay(String s) {

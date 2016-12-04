@@ -15,6 +15,7 @@ public class Timer  {
     public String sound;
     public boolean isActive;
     public Days Day;
+    public String _id;
 
     @Override
     public String toString() {

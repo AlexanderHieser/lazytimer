@@ -1,6 +1,9 @@
 package something.hackinghieser.lazytimer.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +33,7 @@ public class TimerItemAdapter extends RecyclerView.Adapter<TimerItemAdapter.Time
     @Override
     public TimerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.list_item,null,false);
+        View view = inflater.inflate(R.layout.list_item, null, false);
         return new TimerViewHolder(view);
     }
 
@@ -51,6 +54,7 @@ public class TimerItemAdapter extends RecyclerView.Adapter<TimerItemAdapter.Time
         private TextView Sound;
         private ImageButton ClockButton;
         private ImageButton CloseButton;
+        private ImageButton SoundButton;
 
         public TimerViewHolder(View itemView) {
             super(itemView);
@@ -58,22 +62,25 @@ public class TimerItemAdapter extends RecyclerView.Adapter<TimerItemAdapter.Time
             Sound = (TextView) itemView.findViewById(R.id.sound);
             ClockButton = (ImageButton) itemView.findViewById(R.id.clockButton);
             CloseButton = (ImageButton) itemView.findViewById(R.id.closeButton);
+            SoundButton = (ImageButton) itemView.findViewById(R.id.soundButton);
         }
 
         public void bind(final Timer timer) {
             Clock.setText(timer.Clock);
             Sound.setText(timer.sound);
 
-            if(timer.isActive) {
+            if (timer.isActive) {
                 ClockButton.setImageDrawable(itemView.getContext().getDrawable(R.drawable.clock_active));
-            }else {
+            } else {
                 ClockButton.setImageDrawable(itemView.getContext().getDrawable(R.drawable.clock_inactive));
             }
 
             CloseButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(),"Close clicked",Toast.LENGTH_LONG).show();
+                    new DB(itemView.getContext()).deleteAlarm(timer._id);
+                    source.remove(getAdapterPosition());
+                    notifyItemRemoved(getAdapterPosition());
                 }
             });
 
@@ -81,7 +88,19 @@ public class TimerItemAdapter extends RecyclerView.Adapter<TimerItemAdapter.Time
                 @Override
                 public void onClick(View view) {
                     timer.isActive = !timer.isActive;
-                    notifyDataSetChanged();
+                    new DB(itemView.getContext()).updateAlarm(timer);
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
+
+            SoundButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+                    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+                    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select Tone");
+                    intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, (Uri) null);
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }

@@ -38,37 +38,37 @@ public class MainActivity extends AppCompatActivity implements AddAlarmDialog.No
         tabs.setViewPager(pager);
         init();
         DB db = new DB(getApplicationContext());
-        for(int i = 0; i < 10;i++) {
+        for(int i = 2; i < 10;i++) {
             Timer t = new Timer();
-            t.Clock = "19:00";
+            t.Clock = "19:"+(i *5);
             t.sound = "Enterprise Intro";
             t.Day = Days.MONDAY;
             t.isActive = true;
             db.saveAlarm(t);
         }
 
-        for(int i = 0; i < 10;i++) {
+        for(int i = 2; i < 10;i++) {
             Timer t = new Timer();
-            t.Clock = "18:00";
-            t.sound = "Enterprise Intro";
+            t.Clock = "18:"+(i *5);;
+            t.sound = "Intro";
             t.Day = Days.TUESDAY;
             t.isActive = true;
             db.saveAlarm(t);
         }
 
-        for(int i = 0; i < 10;i++) {
+        for(int i = 2; i < 10;i++) {
             Timer t = new Timer();
-            t.Clock = "18:00";
-            t.sound = "Enterprise Intro";
+            t.Clock = "18:"+(i *5);;
+            t.sound = "Alarm 01";
             t.Day = Days.THURSTDAY;
             t.isActive = true;
             db.saveAlarm(t);
         }
 
-        for(int i = 0; i < 10;i++) {
+        for(int i = 2; i < 10;i++) {
             Timer t = new Timer();
-            t.Clock = "14:00";
-            t.sound = "Enterprise Intro";
+            t.Clock = "14:"+(i *5);
+            t.sound = "FunkySound";
             t.Day = Days.SUNDAY;
             t.isActive = true;
             db.saveAlarm(t);
