@@ -17,6 +17,7 @@ import something.hackinghieser.lazytimer.base.BaseFragment;
 public class SimplePagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<BaseFragment> fragments;
+    private BaseFragment currentFragment;
 
     public SimplePagerAdapter(FragmentManager fm, ArrayList<BaseFragment> fragments) {
         super(fm);
@@ -25,7 +26,8 @@ public class SimplePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return fragments.get(position);
+        currentFragment = fragments.get(position);
+        return currentFragment;
     }
 
     @Override
@@ -36,5 +38,9 @@ public class SimplePagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return fragments.size();
+    }
+
+    public BaseFragment getActualFragment() {
+        return currentFragment;
     }
 }

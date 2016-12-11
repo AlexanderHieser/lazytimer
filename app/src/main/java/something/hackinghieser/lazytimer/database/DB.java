@@ -108,6 +108,11 @@ public class DB extends SQLiteOpenHelper {
         db.update(TimerDB.TimerEntry.TABLE_NAME,cv,"_id="+timer._id,null);
     }
 
+    public void dropWholeDay(Days days) {
+        Log.i("DB","Delete Day: "+ days.getText());
+        getWritableDatabase().delete(TimerDB.TimerEntry.TABLE_NAME, "day" + "='" + days.getText()+"'", null);
+    }
+
     public Days getDay(String s) {
         if (s.equals("Monday")) {
             return Days.MONDAY;

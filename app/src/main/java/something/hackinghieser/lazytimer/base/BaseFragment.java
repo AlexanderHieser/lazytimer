@@ -12,7 +12,7 @@ import something.hackinghieser.lazytimer.utils.Days;
  * Created by Alexander Hieser on 03.12.2016.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements DoRefreshCallback {
 
 
     public BaseFragment() {
@@ -34,6 +34,5 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public Days day;
-
 
 }

@@ -56,6 +56,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:id="@+id/addAlarms"
+                android:scaleType="fitCenter"
+                android:src="@drawable/add_timers"
+                android:text="Clear"
+                android:textColor="#E30000" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?attr/dividerHorizontal" />
+            <ImageButton
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/drop_day"
                 android:scaleType="fitCenter"
                 android:src="@drawable/drop_db"
                 android:text="Clear"
@@ -65,7 +81,6 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="?attr/dividerHorizontal" />
-
             <ImageButton
                 style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
@@ -73,6 +88,20 @@
                 android:layout_weight="1"
                 android:scaleType="fitCenter"
                 android:src="@drawable/mute"
+                android:text="Mute"
+                android:textColor="#4DACE3" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="?attr/dividerHorizontal" />
+            <ImageButton
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mute_tiemrs"
                 android:text="Mute"
                 android:textColor="#4DACE3" />
 

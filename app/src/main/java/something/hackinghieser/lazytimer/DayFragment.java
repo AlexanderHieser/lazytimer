@@ -22,6 +22,9 @@ import something.hackinghieser.lazytimer.model.Timer;
 public class DayFragment extends BaseFragment {
 
 
+    private TimerItemAdapter adapter;
+    private RecyclerView list;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,9 +34,16 @@ public class DayFragment extends BaseFragment {
     }
 
     private void init(View view) {
-        RecyclerView list = (RecyclerView) view.findViewById(R.id.list);
-        TimerItemAdapter adapter = new TimerItemAdapter(createMock());
+        list = (RecyclerView) view.findViewById(R.id.list);
+        adapter = new TimerItemAdapter(getTimersFromDB());
         list.setLayoutManager(new LinearLayoutManager(getContext()));
+        list.setAdapter(adapter);
+    }
+
+
+    @Override
+    public void doRefresh() {
+        adapter = new TimerItemAdapter(getTimersFromDB());
         list.setAdapter(adapter);
     }
 
@@ -41,10 +51,10 @@ public class DayFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        createMock();
+        getTimersFromDB();
     }
 
-    private ArrayList<Timer>  createMock() throws NullPointerException {
+    private ArrayList<Timer> getTimersFromDB() throws NullPointerException {
         if(day != null) {
             return new DB(getActivity()).readAlarms(day);
         }else throw new NullPointerException("Day is null");
