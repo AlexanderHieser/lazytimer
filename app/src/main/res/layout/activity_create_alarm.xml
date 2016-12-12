@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_create_alarm"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="something.hackinghieser.lazytimer.CreateAlarmActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Start"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TimePicker
+                    android:id="@+id/start"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:timePickerMode="spinner" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="End"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TimePicker
+                    android:id="@+id/end"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:timePickerMode="spinner" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Abstand"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <NumberPicker
+                    android:id="@+id/intervall_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="16dp"
+                    android:background="?attr/dividerVertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/type"
+                        style="@android:style/Widget.Holo.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_weight="1"
+                        android:text="Alarm Ton"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignTop="@+id/button"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Startrek" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="?attr/dividerVertical" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/button"
+                        style="@android:style/Widget.Holo.Button.Borderless"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_weight="1"
+                        android:text="Type"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignTop="@+id/button"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Startrek" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="?attr/dividerVertical" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/save"
+            style="@android:style/Widget.Holo.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:text="Save"
+            android:textColor="@android:color/holo_green_light" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="16dp"
+            android:background="?attr/dividerHorizontal" />
+
+        <Button
+            android:id="@+id/cancel"
+            style="@android:style/Widget.Holo.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:textColor="@android:color/holo_red_light" />
+    </LinearLayout>
+</LinearLayout>

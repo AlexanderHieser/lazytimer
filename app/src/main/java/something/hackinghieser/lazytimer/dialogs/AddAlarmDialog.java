@@ -25,7 +25,7 @@ import something.hackinghieser.lazytimer.R;
 public class AddAlarmDialog extends DialogFragment {
 
     public interface NoticeDialogListener {
-        void onDialogPositiveClick(DialogFragment dialog);
+        void onDialogPositiveClick(DialogFragment dialog,String start, String end, String intervall);
         void onDialogNegativeClick(DialogFragment dialog);
     }
 
@@ -40,6 +40,8 @@ public class AddAlarmDialog extends DialogFragment {
         View view = inflater.inflate(R.layout.dialog_add_alarms,null,false);
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.intervall_check);
         final TextView time = (TextView) view.findViewById(R.id.time);
+        final EditText start = (EditText) view.findViewById(R.id.start_time);
+        final EditText end = (EditText) view.findViewById(R.id.end_time);
         final EditText editText = (EditText) view.findViewById(R.id.intervall_edit);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -58,7 +60,7 @@ public class AddAlarmDialog extends DialogFragment {
                 .setPositiveButton("Übernehmen", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        mListener.onDialogPositiveClick(AddAlarmDialog.this);
+                        mListener.onDialogPositiveClick(AddAlarmDialog.this,start.getText().toString(),end.getText().toString(),editText.getText().toString());
                     }
                 })
                 .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {

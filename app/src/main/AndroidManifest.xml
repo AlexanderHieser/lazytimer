@@ -8,17 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".AlarmWizardActivity" />
-        <activity android:name=".Splash" android:theme="@style/AppTheme.Fullscreen">
+        <activity
+            android:name=".Splash"
+            android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CreateAlarmActivity" android:theme="@style/AppTheme" android:label="Wecker stellen"></activity>
     </application>
 
 </manifest>

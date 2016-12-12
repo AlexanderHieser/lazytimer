@@ -4,16 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_splash"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
     android:background="@color/primary"
-    android:layout_height="match_parent"
-    tools:context="something.hackinghieser.lazytimer.Splash">
+    tools:context="something.hackinghieser.lazytimer.Splash"
+    android:weightSum="1">
 
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="32dp"
-    android:padding="40dp"
-    android:scaleType="fitCenter"
-    android:src="@drawable/logo"
-></ImageView>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="353dp"
+        android:layout_margin="32dp"
+        android:padding="40dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorName="PacmanIndicator" />
 </LinearLayout>

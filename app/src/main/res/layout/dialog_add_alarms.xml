@@ -15,6 +15,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:text="19:00"
+        android:id="@+id/start_time"
         android:textSize="40sp"
         android:layout_gravity="center"
         android:layout_height="wrap_content" />
@@ -29,6 +30,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:textSize="40sp"
+        android:id="@+id/end_time"
         android:layout_gravity="center"
         android:text="19:00"
         android:layout_height="wrap_content" />

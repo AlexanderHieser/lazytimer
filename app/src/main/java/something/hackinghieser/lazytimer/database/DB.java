@@ -61,6 +61,7 @@ public class DB extends SQLiteOpenHelper {
         values.put(TimerDB.TimerEntry.COLUMN_NAME_SOUND, timer.sound);
         long newRowId = db.insert(TimerDB.TimerEntry.TABLE_NAME, null, values);
         Log.i("DB", "Alaram saved");
+        db.close();
     }
 
     public ArrayList<Timer> readAlarms(Days d) {
@@ -90,12 +91,14 @@ public class DB extends SQLiteOpenHelper {
         }
         Log.i("DB", ""+alarms.size());
         cursor.close();
+        db.close();
         return alarms;
     }
 
     public void deleteAlarm(String id) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(TimerDB.TimerEntry.TABLE_NAME,"_id=?",new String[]{id});
+        db.close();
     }
 
     public void updateAlarm(Timer timer) {
@@ -106,11 +109,14 @@ public class DB extends SQLiteOpenHelper {
         cv.put("day",timer.Day.getText());
         SQLiteDatabase db = getWritableDatabase();
         db.update(TimerDB.TimerEntry.TABLE_NAME,cv,"_id="+timer._id,null);
+        db.close();
     }
 
     public void dropWholeDay(Days days) {
         Log.i("DB","Delete Day: "+ days.getText());
-        getWritableDatabase().delete(TimerDB.TimerEntry.TABLE_NAME, "day" + "='" + days.getText()+"'", null);
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TimerDB.TimerEntry.TABLE_NAME, "day" + "='" + days.getText()+"'", null);
+        db.close();
     }
 
     public Days getDay(String s) {
